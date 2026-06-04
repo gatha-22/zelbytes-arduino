@@ -1,12 +1,11 @@
-# Zelbytes Arduino
+# Zelbytes Arduino Internship Repository
 
-Day 1–2 firmware setup.
+Name: Gatha S
 
-## Completed
-- Arduino IDE installed
-- Arduino Uno configured
-- Blink sketch uploaded
-- Serial Hello sketch uploaded
+Board: Arduino Uno R3 Compatible
 
-## Hardware
-See docs/HARDWARE.md
+## Tasks
+- Task1: Arduino Foundations
+- Task2: Git for Firmware & Project Structure
+
+This repository contains all internship tasks, code, documentation, and wiring images.
