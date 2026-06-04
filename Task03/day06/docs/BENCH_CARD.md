@@ -47,7 +47,7 @@ Shows:
 ## Manual Shutoff Valve
 
 Location:
-[Fill in actual bench location]
+Mounted next to the solenoid valve on the irrigation test bench.
 
 Use before disconnecting plumbing.
 
