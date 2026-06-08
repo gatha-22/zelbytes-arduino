@@ -1,4 +1,4 @@
-# TASK-06: Sensor Calibration and Data Logging
+# TASK-04: Sensor Calibration and Data Logging
 
 ## Objective
 
