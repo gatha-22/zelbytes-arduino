@@ -1,7 +1,0 @@
-Q3. Role of Run-Length Encoding (RLE) in Lossless Image Compression (3 Marks)
-Run-Length Encoding (RLE) is a lossless compression technique that replaces consecutive repeated pixel values with a value + count pair.
-Example: AAAAAA → (A,6) reduces storage.
-Works well for images with large uniform regions (e.g., binary images, simple graphics).
-Reduces data size by eliminating redundancy due to repeated pixels without loss of information.
-
-👉 Conclusion: RLE compresses data efficiently when there are long runs of identical pixel values.
