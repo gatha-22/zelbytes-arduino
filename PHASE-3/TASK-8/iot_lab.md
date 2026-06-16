@@ -1,49 +1,60 @@
 # IoT Lab Integration
 
 ## Objective
-Post bench telemetry data (temperature, humidity, soil moisture, CO2) from
-Arduino Uno to the Zelbytes IoT Learning Lab dashboard using a host Python
-script, since the Uno has no native WiFi capability.
+
+Post telemetry data from a NodeMCU ESP8266 to the Zelbytes IoT Learning Lab dashboard using the HTTPS telemetry endpoint and verify successful data collection through the API Explorer.
 
 ## Device Information
-- **Device ID:** krishnaas_bench01
-- **Endpoint:** https://careers.zelbytes.com/api/iot-lab/v1/telemetry
-- **Telemetry Topic:** zelbytes/lab/65/telemetry
+
+* **Device ID:** gatha-irrigation-01
+* **Endpoint:** https://careers.zelbytes.com/api/iot-lab/v1/telemetry
+* **Node:** 54
+* **Telemetry Topic:** zelbytes/lab/54/telemetry
 
 ## Architecture
-Arduino Uno reads sensor values and prints them as CSV over Serial.
-A Python script running on the host laptop reads this Serial CSV data,
-converts it to JSON, and POSTs it to the IoT Lab telemetry endpoint
-using the API key stored in `secrets.h` (gitignored, never committed).
 
-## Field Mapping (CSV → JSON)
+The NodeMCU ESP8266 connects directly to a Wi-Fi network and sends telemetry data to the Zelbytes IoT Learning Lab using HTTPS requests. Sensor readings are packaged into JSON format and transmitted to the telemetry endpoint using the assigned API key.
 
-| CSV Column (Day 11) | JSON Field         | Type  | Description                   |
-|----------------------|--------------------|-------|--------------------------------|
-| temp                 | temperature_c       | float | Temperature in Celsius        |
-| humidity             | humidity_pct        | int   | Relative humidity percentage  |
-| soil                 | soil_moisture_pct   | int   | Soil moisture percentage      |
-| co2                  | co2_ppm             | int   | CO2 concentration in ppm      |
+## Field Mapping
+
+| Field             | Type  | Description                  |
+| ----------------- | ----- | ---------------------------- |
+| temperature_c     | float | Temperature in Celsius       |
+| humidity_pct      | int   | Relative humidity percentage |
+| soil_moisture_pct | int   | Soil moisture percentage     |
+| co2_ppm           | int   | CO₂ concentration in ppm     |
 
 ## Sample JSON Payload
+
 ```json
 {
-  "device_id": "krishnaas_bench01",
-  "temperature_c": 29.7,
-  "humidity_pct": 87,
-  "soil_moisture_pct": 32,
-  "co2_ppm": 911
+  "device_id": "gatha-irrigation-01",
+  "temperature_c": 29.5,
+  "humidity_pct": 90,
+  "soil_moisture_pct": 31,
+  "co2_ppm": 1113
 }
 ```
 
 ## Security
-- API key is stored in `secrets.h`, excluded from version control via `.gitignore`.
-- Only `secrets.h.example` (with placeholder values) is committed to the repository.
-- API key is never logged, printed in screenshots, or included in commit messages.
+
+* API key is stored in `secrets.h`.
+* `secrets.h` is excluded from version control using `.gitignore`.
+* Only `secrets.h.example` containing placeholder values is committed to GitHub.
+* API keys are never included in screenshots, commits, or documentation.
 
 ## Verification
-- 10 sample readings were successfully posted under device_id `krishnaas_bench01`, each returning HTTP status **202**.
-- Data was confirmed visible via **IoT Lab → API Explorer**, with the `temperature_c` series showing multiple recorded data points across all samples sent.
 
-## Notes
-- ESP8266 WiFi bridge integration is planned for Day 17, removing the need for a host Python relay script.
+* Telemetry data was successfully transmitted to the Zelbytes IoT Learning Lab endpoint.
+* More than 10 telemetry samples were recorded under device ID `gatha-irrigation-01`.
+* Data was verified through **IoT Lab → API Explorer**.
+* The dashboard displayed the latest values for temperature, humidity, soil moisture, and CO₂ concentration.
+* The telemetry series endpoint confirmed successful storage of all submitted samples.
+
+## Results
+
+The IoT Lab dashboard successfully received and stored telemetry readings from the NodeMCU ESP8266. The API Explorer showed multiple recorded samples, satisfying the requirement of collecting and displaying at least 10 telemetry entries.
+
+## Conclusion
+
+Telemetry integration with the Zelbytes IoT Learning Lab was successfully completed using a NodeMCU ESP8266. The device authenticated using the provided API key, transmitted telemetry data over HTTPS, and the resulting data was verified through the IoT Lab API Explorer and dashboard.
