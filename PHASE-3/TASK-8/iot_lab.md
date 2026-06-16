@@ -28,7 +28,7 @@ The NodeMCU ESP8266 connects directly to a Wi-Fi network and sends telemetry dat
 
 ```json
 {
-  "device_id": "gatha-irrigation-01",
+  "device_id": "gatha_bench01",
   "temperature_c": 29.5,
   "humidity_pct": 90,
   "soil_moisture_pct": 31,
