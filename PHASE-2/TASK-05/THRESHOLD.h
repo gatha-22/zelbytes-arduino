@@ -1,13 +1,55 @@
-#ifndef THRESHOLDS_H
-#define THRESHOLDS_H
+#include <DHT.h>
 
-const int SOIL_MIN = 25;
-const int SOIL_TARGET = 40;
+#define DHTPIN 2
+#define DHTTYPE DHT11
 
-const int LOW_COUNT_REQ = 3;
-const int HUMIDITY_MAX = 85;
+#define SOIL_PIN A0
+#define LIGHT_PIN A1
 
-const unsigned long MAX_RUN_TIME = 10000UL;
-const unsigned long COOLDOWN_TIME = 5000UL;
+DHT dht(DHTPIN, DHTTYPE);
 
-#endif
+unsigned long startTime;
+const unsigned long LOG_INTERVAL = 30000; // 30 sec
+
+void setup() {
+  Serial.begin(9600);
+
+  dht.begin();
+
+  startTime = millis();
+
+  Serial.println("timestamp,temp,humidity,soil,light");
+}
+
+void loop() {
+
+  static unsigned long lastLog = 0;
+
+  if (millis() - lastLog >= LOG_INTERVAL) {
+
+    lastLog = millis();
+
+    float temp = dht.readTemperature();
+    float humidity = dht.readHumidity();
+
+    int soil = analogRead(SOIL_PIN);
+    int light = analogRead(LIGHT_PIN);
+
+    unsigned long timestamp =
+      (millis() - startTime) / 1000;
+
+    Serial.print(timestamp);
+    Serial.print(",");
+
+    Serial.print(temp);
+    Serial.print(",");
+
+    Serial.print(humidity);
+    Serial.print(",");
+
+    Serial.print(soil);
+    Serial.print(",");
+
+    Serial.println(light);
+  }
+}
