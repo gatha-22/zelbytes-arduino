@@ -2,9 +2,8 @@
 
 ## **Student Information**
 
-**Name:** Anamika S S  
-**KTU ID:** SCT23EC023  
-**College:** Sree Chitra Thirunal College of Engineering  
+**Name:** GATHA S  
+**College:**  College of Engineering CHENGANNUR
 **Branch:** Electronics and Communication Engineering  
 **Internship:** Zelbytes Arduino Foundations Internship  
 **Task:** Task 10 – Final Firmware Report
@@ -88,7 +87,6 @@ A Streamlit dashboard displays sensor readings, logs, graphs, and relay status.
 
 All modules share a common ground connection.
 
-![Hardware Setup](../images/hardware_setup.jpeg)
 
 ---
 
@@ -191,7 +189,6 @@ The dashboard was developed using Streamlit.
 - Quick diagnostics
 - User-friendly interface
 
-![Dashboard Screenshot](../images/Dashboard.jpeg)
 
 ---
 
